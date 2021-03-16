@@ -24,11 +24,11 @@ public class Availability {
 		
 		driver.get("https://www.irctc.co.in/nget/train-search");
 		driver.manage().window().maximize();
+		Thread.sleep(3000);
+		//driver.manage().deleteAllCookies();
 		System.out.println(driver.getTitle());
-		Thread.sleep(3000);
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
-		Thread.sleep(3000);
-		driver.quit();
+		//Thread.sleep(3000);
 	}
 
 }
