@@ -1,3 +1,5 @@
+//WORKS SAME BUT USING PARENT CHILD RELATIONSHIP FOR SELECTING SOURCE AND DESTINATION
+
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -7,13 +9,11 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-
-public class Availability {
+public class AvailabilityStatic {
 
 	public static void main(String[] args) throws InterruptedException {
 		// TODO Auto-generated method stub
-		
-		
+
 		Map<String, Object> prefs = new HashMap<String, Object>();
 		prefs.put("profile.default_content_setting_values.notifications", 2);
 		
@@ -34,37 +34,13 @@ public class Availability {
 		JavascriptExecutor js = (JavascriptExecutor)driver;
 		js.executeScript("window.scrollBy(0,100)");
 		Thread.sleep(3000);
-		
-		driver.findElement(By.cssSelector("input[aria-controls='pr_id_1_list']")).sendKeys("N");
-           
+			
+		driver.findElement(By.id("origin")).click();
 		Thread.sleep(2000);
-		List<WebElement> fromOptions = driver.findElements(By.cssSelector("ul[class='ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ng-tns-c58-8'] li"));
-		
-		for (WebElement from: fromOptions)
-		{
-			if(from.getText().equalsIgnoreCase("NEW DELHI - NDLS"))
-			{   
-				System.out.println(from.getText());
-				from.click();
-				break;
-				
-			}
-		}
-		driver.findElement(By.cssSelector("input[aria-controls='pr_id_2_list']")).sendKeys("P");
-        
+		driver.findElement(By.xpath("//ul[@class='ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ng-tns-c58-8']/li[2]")).click();
+		driver.findElement(By.id("destination")).click();
 		Thread.sleep(2000);
-		List<WebElement> toOptions = driver.findElements(By.cssSelector("ul[class='ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ng-tns-c58-9'] li"));
-		
-		for (WebElement to: toOptions)
-		{
-			if(to.getText().equalsIgnoreCase("PUNE JN - PUNE"))
-			{
-				System.out.println(to.getText());
-				to.click();
-				break;
-				
-			}
-		}
+		driver.findElement(By.xpath("//ul[@class='ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ng-tns-c58-9']/li[5]")).click(); 
 		
 		driver.findElement(By.id("journeyClass")).click();
 		Thread.sleep(2000);
@@ -95,7 +71,6 @@ public class Availability {
 			
 			}
 		}
-		
 	}
 
 }
