@@ -3,6 +3,8 @@
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
@@ -24,6 +26,9 @@ public class AvailabilityStatic {
 		System.setProperty("webdriver.chrome.driver","C:\\Users\\DELL\\Documents\\chromedriver.exe");
 		
 		WebDriver driver = new ChromeDriver(options);
+		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
+		
+	
 		driver.manage().deleteAllCookies();
 		driver.get("https://www.irctc.co.in/nget/train-search");
 		driver.manage().window().maximize();
@@ -41,6 +46,29 @@ public class AvailabilityStatic {
 		driver.findElement(By.id("destination")).click();
 		Thread.sleep(2000);
 		driver.findElement(By.xpath("//ul[@class='ui-autocomplete-items ui-autocomplete-list ui-widget-content ui-widget ui-corner-all ui-helper-reset ng-tns-c58-9']/li[5]")).click(); 
+		driver.findElement(By.cssSelector("span[class='ng-tns-c59-10 ui-calendar']")).click();
+		
+		driver.findElement(By.cssSelector("span[class='ng-tns-c59-10 ui-calendar']")).click();
+		Thread.sleep(3000);
+		
+		while(!driver.findElement(By.cssSelector("span[class='ui-datepicker-month ng-tns-c59-10 ng-star-inserted']")).getText().contains("April") && !driver.findElement(By.cssSelector("span[class='ui-datepicker-year ng-tns-c59-10 ng-star-inserted']")).getText().contains(" 2021"))
+		{
+			driver.findElement(By.cssSelector("span[class='ui-datepicker-next-icon pi pi-chevron-right ng-tns-c59-10']")).click();
+		}
+			
+		Thread.sleep(3000);		
+		
+		int count = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).size();
+		
+		for(int i=0; i<count; i++)
+		{
+			String text = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).get(i).getText();
+			if(text.equalsIgnoreCase("15"))
+			{
+				driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).get(i).click();
+				break;
+			}
+		}	
 		
 		driver.findElement(By.id("journeyClass")).click();
 		Thread.sleep(2000);
@@ -71,6 +99,13 @@ public class AvailabilityStatic {
 			
 			}
 		}
+		
+		System.out.println(driver.findElement(By.id("availableBerth")).isSelected());
+		driver.findElement(By.cssSelector("label[for='availableBerth']")).click();
+		System.out.println(driver.findElement(By.id("availableBerth")).isSelected());
+	  
+		driver.findElement(By.cssSelector("button[type='submit']")).click();
+	
 	}
 
 }
