@@ -58,14 +58,14 @@ public class AvailabilityStatic {
 			
 		Thread.sleep(3000);		
 		
-		int count = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).size();
+		int count = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).size();
 		
 		for(int i=0; i<count; i++)
 		{
-			String text = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).get(i).getText();
+			String text = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).get(i).getText();
 			if(text.equalsIgnoreCase("15"))
 			{
-				driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted']")).get(i).click();
+				driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).get(i).click();
 				break;
 			}
 		}	
