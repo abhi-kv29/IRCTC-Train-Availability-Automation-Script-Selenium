@@ -96,6 +96,10 @@ public class Availability {
 			}
 		}
 		
+		System.out.println(driver.findElement(By.id("availableBerth")).isSelected());
+		driver.findElement(By.cssSelector("label[for='availableBerth']")).click();
+		System.out.println(driver.findElement(By.id("availableBerth")).isSelected());
+		
 	}
 
 }
