@@ -21,6 +21,7 @@ The IRCTC TRAIN AVAILABILITY AUTOMATION SCRIPT is an end to end test script auto
 - On invoking the browser and getting the URL of the site, some implicit and thread delays provided in order to prevent script failure and provide synchronization with the parameters. 
 - After setting all the parameters with dynamic inputs it submits the response and redirects to the main availability page where all the available trains for the particular inputted parameters can be viewed. 
 - In addition most of the responses are recorded in console for validation also some methods are used for that only. 
+- Improved Script speed performance by adding explicit wait. 
 
 ---
 
