@@ -59,7 +59,7 @@ public class AvailabilityStatic {
 		Thread.sleep(3000);		
 		
 		int count = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).size();
-		
+
 		for(int i=0; i<count; i++)
 		{
 			String text = driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).get(i).getText();

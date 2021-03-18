@@ -85,6 +85,7 @@ public class Availability {
 			{
 				 driver.findElements(By.cssSelector("td[class='ng-tns-c59-10 ng-star-inserted'] a")).get(i).click();
 				 break;
+				
 			}
 		}	
 		
