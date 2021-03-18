@@ -28,10 +28,10 @@ public class AvailabilityStatic {
 		WebDriver driver = new ChromeDriver(options);
 		driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
 		
-	
-		driver.manage().deleteAllCookies();
-		driver.get("https://www.irctc.co.in/nget/train-search");
 		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		
+		driver.get("https://www.irctc.co.in/nget/train-search");
 		Thread.sleep(3000);
 		System.out.println(driver.getTitle());
 		driver.findElement(By.cssSelector("button[type='submit']")).click();
